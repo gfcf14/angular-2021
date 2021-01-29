@@ -1,13 +1,18 @@
-<label>Server Name</label>
-<!-- <input type='text' class='form-control' (input)='onUpdateServerName($event)'> -->
-<input type='text' class='form-control' [(ngModel)]='serverName'>
-<!-- <p>{{serverName}}</p> -->
 <hr />
 <h4>Assignment 2:</h4>
 <input type='text' class='form-control' [(ngModel)]='username'>
 <button class='btn btn-primary' [disabled]='isEmpty()' (click)='resetUsername()'>Reset</button>
 <p>{{username}}</p>
 <hr />
+<h4>Assignment 3:</h4>
+<button class='btn btn-primary' (click)='toggleDetails()' [ngClass]='{hidden: !showDetails}'>DISPLAY DETAILS</button>
+<p *ngIf='showDetails'>Details go here</p>
+<p *ngFor='let log of detailsLog; index as i' [ngClass]='{white: i > 3}' [ngStyle]='{background: isFifthOrMore(i)}'>{{displayLog(log)}}</p>
+<hr />
+<label>Server Name</label>
+<!-- <input type='text' class='form-control' (input)='onUpdateServerName($event)'> -->
+<input type='text' class='form-control' [(ngModel)]='serverName'>
+<!-- <p>{{serverName}}</p> -->
 <button
   class='btn btn-primary'
   [disabled]='!allowNewServer'

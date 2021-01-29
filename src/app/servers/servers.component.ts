@@ -12,6 +12,8 @@ export class ServersComponent implements OnInit {
   serverName: string = 'Testserver';
   username: String = '';
   servers: String[] = ['TestServer', 'TestServer 2' ];
+  showDetails: boolean = true;
+  detailsLog: Object[] = [];
 
   constructor() {
     setTimeout(() => {
@@ -38,6 +40,21 @@ export class ServersComponent implements OnInit {
 
   resetUsername() {
     this.username = '';
+  }
+
+  toggleDetails() {
+    this.showDetails = !this.showDetails;
+    let dataAction = this.showDetails ? 'shown' : 'hidden';
+    this.detailsLog.push({action: dataAction, time: new Date().toString()})
+  }
+
+  displayLog(log) {
+    const { action, time } = log;
+    return `Data was ${action} on ${time}`;
+  }
+
+  isFifthOrMore(i) {
+    return i > 3 ? '#0000ff' : 'none';
   }
 
 }
